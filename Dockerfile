@@ -16,3 +16,15 @@ COPY ./app .
 EXPOSE 3000
 
 CMD ["node", "server.js"]
+
+COPY ./app .
+# NEW
+COPY ./entrypoint.sh /usr/local/bin/entrypoint.sh
+# NEW
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+EXPOSE 3000
+
+# NEW
+ENTRYPOINT ["entrypoint.sh"]
+CMD ["node", "server.js"]
